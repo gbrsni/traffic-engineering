@@ -24,6 +24,7 @@ public:
     const std::string &getInInterface(const std::string &nodeName) const;
     const Node &getNode(const std::string &name) const;
     const Node &getRoot() const { return _root; }
+    double getPeriod() const { return _period; }
 
     std::vector<Link> getAllLinks() const;
 

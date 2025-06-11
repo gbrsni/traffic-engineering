@@ -34,7 +34,7 @@ Topology makeTopology(omnetpp::cTopology &topology) {
         auto *module = topology.getNode(i)->getModule();
         for (int i = 0; i < module->gateCount(); i++) {
             auto const localGate = module->gateByOrdinal(i);
-            if (localGate->getType() == omnetpp::cGate::INPUT) {
+            if (localGate->getType() == omnetpp::cGate::INPUT || std::string(localGate->getName()).compare("GateControlPlane$o")) {
                 continue;
             }
 

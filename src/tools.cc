@@ -34,8 +34,10 @@ Topology makeTopology(omnetpp::cTopology &topology) {
         auto *module = topology.getNode(i)->getModule();
         for (int i = 0; i < module->gateCount(); i++) {
             auto const localGate = module->gateByOrdinal(i);
-            if (localGate->getType() == omnetpp::cGate::INPUT || std::string(localGate->getName()).compare("GateControlPlane$o") == 0 || std::string(localGate->getName()).compare("GateControlPlane$i") == 0) {
-                std::cout << "Skipping gate " << localGate->getName() << std::endl;
+            std::string gateName = localGate->getName();
+            // std::cout << "Current gate " << gateName << std::endl;
+            if (localGate->getType() == omnetpp::cGate::INPUT || gateName.compare("gateControlPlane$o") == 0 || gateName.compare("GateControlPlane$i") == 0) {
+                // std::cout << "Skipping gate " << gateName << std::endl;
                 continue;
             }
 
